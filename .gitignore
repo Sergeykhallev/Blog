@@ -20,3 +20,5 @@ yarn-error.log
 /.vscode
 /bootstrap/ssr
 /public/assets
+/public/dist
+/public/plugins

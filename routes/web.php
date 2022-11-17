@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\Main\IndexController;
+use \App\Http\Controllers\Admin\Main\MainController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,6 +17,12 @@ use \App\Http\Controllers\Main\IndexController;
 
 Route::namespace('main')->group(function () {
     Route::get('/', [IndexController::class, '__invoke']);
+});
+
+Route::namespace('Admin')->prefix('admin')->group(function () {
+    Route::namespace('Main')->group(function () {
+        Route::get('/', [MainController::class, '__invoke']);
+    });
 });
 
 Auth::routes();
