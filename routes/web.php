@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\Category\EditController;
 use App\Http\Controllers\Admin\Category\ShowController;
 use App\Http\Controllers\Admin\Category\StoreController;
 use App\Http\Controllers\Admin\Category\UpdateController;
+use \App\Http\Controllers\Admin\Category\DestroyController;
 use App\Http\Controllers\Admin\Main\MainController;
 use App\Http\Controllers\Main\IndexController;
 use Illuminate\Support\Facades\Route;
@@ -36,6 +37,7 @@ Route::namespace('Admin')->prefix('admin')->group(function () {
         Route::get('/{category}', [ShowController::class, '__invoke'])->name('admin.category.show');
         Route::get('/{category}/edit', [EditController::class, '__invoke'])->name('admin.category.edit');
         Route::patch('/{category}', [UpdateController::class, '__invoke'])->name('admin.category.update');
+        Route::delete('/{category}', [DestroyController::class, '__invoke'])->name('admin.category.delete');
     });
 });
 
