@@ -23,3 +23,6 @@ yarn-error.log
 /public/assets
 /public/dist
 /public/plugins
+/resources/js/app.js
+/resources/js/bootstrap.js
+/webpack.mix.js
