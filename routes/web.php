@@ -30,7 +30,7 @@ Route::namespace('Admin')->prefix('admin')->group(function () {
     Route::namespace('Main')->group(function () {
         Route::get('/', [MainController::class, '__invoke']);
     });
-    Route::namespace('Category')->prefix('categories')->group(function () {
+    Route::namespace('Category')->prefix('category')->group(function () {
         Route::get('/', [CategoryController::class, '__invoke'])->name('admin.category.index');
         Route::get('/create', [CreateController::class, '__invoke'])->name('admin.category.create');
         Route::post('/', [StoreController::class, '__invoke'])->name('admin.category.store');
@@ -38,6 +38,15 @@ Route::namespace('Admin')->prefix('admin')->group(function () {
         Route::get('/{category}/edit', [EditController::class, '__invoke'])->name('admin.category.edit');
         Route::patch('/{category}', [UpdateController::class, '__invoke'])->name('admin.category.update');
         Route::delete('/{category}', [DestroyController::class, '__invoke'])->name('admin.category.delete');
+    });
+    Route::namespace('Tag')->prefix('tags')->group(function () {
+        Route::get('/', [\App\Http\Controllers\Admin\Tag\TagController::class, '__invoke'])->name('admin.tag.index');
+        Route::get('/create', [\App\Http\Controllers\Admin\Tag\CreateController::class, '__invoke'])->name('admin.tag.create');
+        Route::post('/', [\App\Http\Controllers\Admin\Tag\StoreController::class, '__invoke'])->name('admin.tag.store');
+        Route::get('/{tag}', [\App\Http\Controllers\Admin\Tag\ShowController::class, '__invoke'])->name('admin.tag.show');
+        Route::get('/{tag}/edit', [\App\Http\Controllers\Admin\Tag\EditController::class, '__invoke'])->name('admin.tag.edit');
+        Route::patch('/{tag}', [\App\Http\Controllers\Admin\Tag\UpdateController::class, '__invoke'])->name('admin.tag.update');
+        Route::delete('/{tag}', [\App\Http\Controllers\Admin\Tag\DestroyController::class, '__invoke'])->name('admin.tag.delete');
     });
 });
 
