@@ -58,6 +58,15 @@ Route::namespace('Admin')->prefix('admin')->group(function () {
         Route::patch('/{tag}', [\App\Http\Controllers\Admin\Tag\UpdateController::class, '__invoke'])->name('admin.tag.update');
         Route::delete('/{tag}', [\App\Http\Controllers\Admin\Tag\DestroyController::class, '__invoke'])->name('admin.tag.delete');
     });
+    Route::namespace('User')->prefix('users')->group(function () {
+        Route::get('/', [CategoryController::class, '__invoke'])->name('admin.user.index');
+        Route::get('/create', [CreateController::class, '__invoke'])->name('admin.user.create');
+        Route::post('/', [StoreController::class, '__invoke'])->name('admin.user.store');
+        Route::get('/{user}', [ShowController::class, '__invoke'])->name('admin.user.show');
+        Route::get('/{user}/edit', [EditController::class, '__invoke'])->name('admin.user.edit');
+        Route::patch('/{user}', [UpdateController::class, '__invoke'])->name('admin.user.update');
+        Route::delete('/{user}', [DestroyController::class, '__invoke'])->name('admin.user.delete');
+    });
 });
 
 Auth::routes();
