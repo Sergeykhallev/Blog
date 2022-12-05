@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Post;
 
-class PostController extends Controller
+class PostController extends BaseController
 {
     public function __invoke()
     {
